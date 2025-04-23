@@ -21,13 +21,13 @@ A powerful command-line tool for comparing Excel (.xlsx) and CSV files. Perfect 
 Install with a single command:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/src/exceldiff/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/scripts/install.sh | bash
 ```
 
 Or with wget:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/src/exceldiff/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/scripts/install.sh | bash
 ```
 
 ### Windows
@@ -35,7 +35,7 @@ wget -qO- https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/src/ex
 Install using PowerShell (run as administrator):
 
 ```powershell
-irm https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/src/exceldiff/install.ps1 | iex
+irm https://raw.githubusercontent.com/ogundaremathew/exceldiff/main/scripts/install.ps1 | iex
 ```
 
 The installer will automatically detect your system architecture (AMD64/ARM64) and install the appropriate version.
@@ -142,6 +142,37 @@ exceldiff q1_data.xlsx q2_data.xlsx -k "Order ID" --sheet1 "Q1 Sales" --sheet2 "
 - Windows, macOS, or Linux
 - 64-bit operating system (AMD64 or ARM64)
 - No additional dependencies required (self-contained binary)
+
+## Development
+
+### Building from Source
+
+Clone the repository and build:
+```bash
+git clone https://github.com/ogundaremathew/exceldiff.git
+cd exceldiff/src/exceldiff
+go build
+```
+
+### Creating a Release
+
+Prerequisites:
+- GitHub CLI (`gh`) installed and authenticated
+- Go 1.16 or later
+
+To create a new release:
+
+1. Make sure all your changes are committed and pushed
+2. Run the release script:
+   ```bash
+   ./scripts/release.sh v1.0.0
+   ```
+   Replace v1.0.0 with your version number
+
+The script will:
+- Build binaries for all supported platforms (Windows, macOS, Linux) and architectures (AMD64, ARM64)
+- Generate SHA256 checksums
+- Create a GitHub release with all the binaries
 
 ## Support
 
